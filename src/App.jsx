@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const fonts = ["Georgia", "Arial", "Courier New", "Tahoma", "Times New Roman"];
+const BACKEND_URL = "https://html-pdf-backend.onrender.com";
 
 export default function App() {
     const contentRef = useRef(null);
@@ -50,9 +51,9 @@ export default function App() {
             return;
         }
 
-      
+        await new Promise(resolve => setTimeout(resolve, 100));
 
-        const response = await fetch('http://localhost:4000/generate-pdf', {
+        const response = await fetch(`${BACKEND_URL}/generate-pdf`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ html: contentRef.current.innerHTML })
@@ -62,7 +63,7 @@ export default function App() {
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'rezume.pdf';
+        link.download = 'CV.pdf';
         link.click();
         URL.revokeObjectURL(url);
         toast.success("Downloaded successfully!");

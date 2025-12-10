@@ -166,7 +166,7 @@ export default function Content({ styles, editMode, formData, handleInputChange,
                                 htmlFor="imageUpload"
                                 style={{
                                     padding: "8px 16px",
-                                    background: "#007bff",
+                                    background: "#05123f",
                                     color: "white",
                                     borderRadius: "6px",
                                     cursor: "pointer",
