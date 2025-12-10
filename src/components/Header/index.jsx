@@ -89,11 +89,12 @@ export default function Header({
                             whiteSpace: "nowrap",
                             boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
                         }}>
-                            ⚠️ Turn off edit mode first
+                            ⚠️ Turn off edit mode first brodar!
                         </div>
                     )}
                 </div>
             </div>
+            
         </header>
     );
 }
