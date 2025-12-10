@@ -1,4 +1,4 @@
-export default function Content({ styles, editMode, formData, handleInputChange }) {
+export default function Content({ styles, editMode, formData, handleInputChange, handleImageChange }) {
     return (
         <div style={{
             maxWidth: "900px",
@@ -36,32 +36,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
             {/* info and image */}
             <div style={{ display: "flex", justifyContent: "space-between", gap: "40px", marginBottom: "60px" }}>
                 <div style={{ flex: 1 }}>
-                    <div style={{ display: "flex", gap: "290px", marginBottom: "28px" }}>
-                        <strong style={{
-                            minWidth: "180px",
-                            fontSize: "16px",
-                            fontWeight: "bold"
-                        }}>
-                            Vollständiger Name:
-                        </strong>
-                        {editMode ? (
-                            <input
-                                type="text"
-                                value={formData.name}
-                                onChange={(e) => handleInputChange("name", e.target.value)}
-                                style={{
-                                    flex: 1,
-                                    padding: "4px 8px",
-                                    border: "1px solid #ddd",
-                                    fontSize: "16px",
-                                    fontFamily: styles.defaultFont
-                                }}
-                            />
-                        ) : (
-                            <span style={{ fontSize: "16px" }}>{formData.name}</span>
-                        )}
-                    </div>
-
+                    {/* Geburtsdatum */}
                     <div style={{ display: "flex", gap: "290px", marginBottom: "28px" }}>
                         <strong style={{
                             minWidth: "180px",
@@ -88,6 +63,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                         )}
                     </div>
 
+                    {/* Anschrift */}
                     <div style={{ display: "flex", gap: "290px", marginBottom: "28px" }}>
                         <strong style={{
                             minWidth: "180px",
@@ -114,7 +90,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                         )}
                     </div>
 
-                    {/* alo alo */}
+                    {/* Telefonnummer */}
                     <div style={{ display: "flex", gap: "290px", marginBottom: "28px" }}>
                         <strong style={{
                             minWidth: "180px",
@@ -123,7 +99,6 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                         }}>
                             Telefonnummer:
                         </strong>
-
                         {editMode ? (
                             <input
                                 type="text"
@@ -142,8 +117,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                         )}
                     </div>
 
-
-                    {/* gmail */}
+                    {/* E-Mail-Adresse */}
                     <div style={{ display: "flex", gap: "290px", marginBottom: "28px" }}>
                         <strong style={{
                             minWidth: "180px",
@@ -152,7 +126,6 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                         }}>
                             E-Mail-Adresse:
                         </strong>
-
                         {editMode ? (
                             <input
                                 type="text"
@@ -170,19 +143,45 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                             <span style={{ fontSize: "16px" }}>{formData.email}</span>
                         )}
                     </div>
-
                 </div>
 
                 {/* Image */}
-                <div style={{ flexShrink: 0 }}>
+                <div style={{ flexShrink: 0, textAlign: "center" }}>
                     <img
-                        src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                        src={formData.profileImage}
                         alt="Profile"
-                        style={{ width: "190px", height: "auto" }}
+                        style={{ width: "190px", height: "auto", display: "block" }}
                     />
+
+                    {editMode && (
+                        <div style={{ marginTop: "10px" }}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                style={{ display: "none" }}
+                                id="imageUpload"
+                            />
+                            <label
+                                htmlFor="imageUpload"
+                                style={{
+                                    padding: "8px 16px",
+                                    background: "#007bff",
+                                    color: "white",
+                                    borderRadius: "6px",
+                                    cursor: "pointer",
+                                    fontSize: "14px",
+                                    display: "inline-block"
+                                }}
+                            >
+                                Change Image
+                            </label>
+                        </div>
+                    )}
                 </div>
             </div>
 
+            {/* Berufserfahrung */}
             <div style={{ marginBottom: "50px" }}>
                 <h2 style={{
                     fontSize: "28px",
@@ -195,6 +194,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                 </h2>
             </div>
 
+            {/* Bildung/Qualifikation */}
             <div style={{ marginBottom: "50px" }}>
                 <h2 style={{
                     fontSize: "28px",
@@ -207,6 +207,7 @@ export default function Content({ styles, editMode, formData, handleInputChange 
                 </h2>
             </div>
 
+            {/* Sprachkenntnisse */}
             <div>
                 <h2 style={{
                     fontSize: "28px",
